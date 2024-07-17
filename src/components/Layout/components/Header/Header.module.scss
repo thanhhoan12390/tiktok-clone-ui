@@ -16,9 +16,13 @@
     width: var(--default-layout-width);
 }
 
+.search,
+.search-result {
+    width: 500px;
+}
+
 .search {
     position: relative;
-    width: 500px;
     height: 46px;
     display: flex;
     align-items: center;
@@ -51,6 +55,13 @@
     &:focus-within {
         border-color: rgba(22, 24, 35, 0.2);
     }
+}
+
+.search-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    color: rgba(22, 24, 35, 0.4);
 }
 
 .clear,
