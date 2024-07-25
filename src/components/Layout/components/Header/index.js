@@ -10,7 +10,6 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faCloudUpload,
     faUser,
     faCoins,
     faGear,
@@ -24,8 +23,10 @@ import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -146,7 +147,19 @@ function Header() {
                         <>
                             <Tippy delay={[0, 200]} content="Upload Video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon></UploadIcon>
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon height="2.6rem" width="2.6rem"></MessageIcon>
+                                </button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon></InboxIcon>
+                                    <span className={cx('inbox-count')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -158,10 +171,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f1fa666bde8bf3c01e96e0e2339861a5~c5_100x100.jpeg?lk3s=a5d48078&nonce=42360&refresh_token=9d45ef92cf3763dd4465bf365dcfc21c&x-expires=1722092400&x-signature=dej2fjPtS%2FDwluPMWh%2FrHV3COiQ%3D&shp=a5d48078&shcp=81f88b70"
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
+                                // fallback="https://files.fullstack.edu.vn/f8-prod/user_photos/332943/64916f84367a6.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
