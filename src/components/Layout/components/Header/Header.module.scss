@@ -17,6 +17,10 @@
     padding: 0 var(--default-layout-horizontal-spacer);
 }
 
+.logo-link {
+    display: flex;
+}
+
 // Actions
 .actions {
     display: flex;
@@ -59,6 +63,7 @@
             border-radius: 10px;
             background: rgb(254, 44, 85);
             color: rgb(255, 255, 255);
+            font-family: var(--font-family);
         }
     }
 }
