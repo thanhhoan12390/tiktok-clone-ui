@@ -40,7 +40,7 @@ const MENU_ITEMS = [
                 {
                     type: 'language',
                     code: 'vi',
-                    title: 'Tieng Viet',
+                    title: 'VietNamese',
                 },
             ],
         },
@@ -64,7 +64,7 @@ function Header() {
         // console.log(menuItem);
         switch (menuItem.type) {
             case 'language':
-                // Handle change languge
+                // Handle change language
                 break;
 
             default:
