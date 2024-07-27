@@ -1,4 +1,12 @@
 .wrapper {
+    // thêm thuộc tính flex để element con có
+    // giới hạn kích thước độ dài rộng.
+    // Không có flex thì nếu element con có tính block
+    // sẽ chiếm hết 1 hàng.
+    // Flex làm cho 1 element ko có tính inline
+    // sẽ có tính block ví dụ thẻ <span>, <a>, <img>
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-height: min((100vh - 96px) - 60px, 734px);
     min-height: 100px;

@@ -38,7 +38,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
         <Tippy
             interactive
             delay={[0, 500]}
-            offset={[12, 8]}
+            offset={[-90, 8]}
             hideOnClick={hideOnClick}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -51,7 +51,10 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        {/* Thêm thẻ div để Item trong phần renderItems() không cùng cấp với header ở trên
+                            khi overflow-y sinh ra scrollbar, khi cuộn sẽ không mất header
+                        */}
+                        <div className={cx('menu-body')}> {renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}
