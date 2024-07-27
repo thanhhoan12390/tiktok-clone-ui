@@ -17,6 +17,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
     const current = history[history.length - 1];
 
     const renderItems = () => {
+        // const ItemsList = current.data.map((item, index) => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             return (
@@ -33,7 +34,29 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                 />
             );
         });
+        // return ItemsList;
     };
+
+    const handleBack = () => {
+        setHistory((prev) => prev.slice(0, prev.length - 1));
+    };
+
+    // Reset to First Page
+    const handleResetMenu = () => {
+        setHistory((prev) => prev.slice(0, 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                {/* Thêm thẻ div để Item trong phần renderItems() không cùng cấp với header ở trên
+                    khi overflow-y sinh ra scrollbar, khi cuộn sẽ không mất header
+                */}
+                <div className={cx('menu-body')}> {renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
 
     return (
         <Tippy
@@ -41,25 +64,8 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             delay={[0, 500]}
             offset={[-90, 8]}
             hideOnClick={hideOnClick}
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && (
-                            <Header
-                                title={current.title}
-                                onBack={() => {
-                                    setHistory((prev) => prev.slice(0, prev.length - 1));
-                                }}
-                            />
-                        )}
-                        {/* Thêm thẻ div để Item trong phần renderItems() không cùng cấp với header ở trên
-                            khi overflow-y sinh ra scrollbar, khi cuộn sẽ không mất header
-                        */}
-                        <div className={cx('menu-body')}> {renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory((prev) => prev.slice(0, 1))}
+            render={renderResult}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>
