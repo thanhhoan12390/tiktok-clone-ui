@@ -1,6 +1,17 @@
 // Suggested Accounts
 .wrapper {
-    border-top: 1px solid #e3e3e4;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 0px;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
 }
 
 .label {
@@ -21,6 +32,13 @@
 .account-item {
     display: flex;
     padding: 8px;
+    border-radius: 4px;
+    transition: background-color ease-in-out 200ms;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
 }
 
 .avatar {
