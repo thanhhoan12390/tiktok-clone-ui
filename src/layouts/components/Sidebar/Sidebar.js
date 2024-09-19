@@ -18,7 +18,7 @@ const cx = classNames.bind(styles);
 function Sidebar() {
     return (
         <aside className={cx('wrapper')}>
-            <Menu>
+            {/* <Menu>
                 <MenuItem title="For You" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem
                     title="Following"
@@ -27,7 +27,7 @@ function Sidebar() {
                     activeIcon={<UserGroupActiveIcon />}
                 />
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
-            </Menu>
+            </Menu> */}
 
             <SuggestedAccounts label="Suggested accounts" />
             <SuggestedAccounts label="Following accounts" />
